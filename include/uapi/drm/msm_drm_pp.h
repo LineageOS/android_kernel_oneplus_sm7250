@@ -118,6 +118,7 @@ struct drm_msm_pa_hsic {
  * @hue_region: Hue qualifier.
  * @sat_region: Saturation qualifier.
  * @val_region: Value qualifier.
+ * @flags: for customizing operations.
  */
 #define DRM_MSM_MEMCOL
 struct drm_msm_memcol {
@@ -131,6 +132,7 @@ struct drm_msm_memcol {
 	__u32 hue_region;
 	__u32 sat_region;
 	__u32 val_region;
+	__u64 flags;
 };
 
 #define DRM_MSM_SIXZONE
