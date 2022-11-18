@@ -86,7 +86,7 @@
 #include <linux/of_gpio.h>
 #endif
 
-#ifdef CONFIG_FB
+#if defined(CONFIG_FB) || defined(CONFIG_DRM_MSM)
 #include <linux/notifier.h>
 #include <linux/fb.h>
 #else

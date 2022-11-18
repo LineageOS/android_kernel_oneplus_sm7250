@@ -7145,7 +7145,7 @@ static struct of_device_id hx83112b_nf_match_table[] = {
 };
 
 static const struct dev_pm_ops hx83112b_nf_pm_ops = {
-#ifdef CONFIG_FB
+#if defined(CONFIG_FB) || defined(CONFIG_DRM_MSM)
     .suspend = hx83112b_nf_i2c_suspend,
     .resume = hx83112b_nf_i2c_resume,
 #endif
