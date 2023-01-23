@@ -2,4 +2,11 @@ menu "Tech packages"
 
 source "techpack/data/Kconfig"
 
+config OPLUS_AVICII_CAMERA
+	bool "OnePlus Nord camera stack"
+	depends on ARCH_LITO
+	default n
+	help
+	  Use the official LineageOS Avicii camera driver and userspace ABI.
+
 endmenu
