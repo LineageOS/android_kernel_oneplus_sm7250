@@ -443,7 +443,7 @@ int set_tfa_i2s(u32 tfa_i2s)
 	return tfa_use_i2s;
 
 }
-EXPORT_SYMBOL(set_tfa_i2s);
+EXPORT_SYMBOL_GPL(set_tfa_i2s);
 #endif/* OPLUS_FEATURE_TFA98XX_VI_FEEDBACK */
 
 static int q6afe_load_avcs_modules(int num_modules, u16 port_id,
