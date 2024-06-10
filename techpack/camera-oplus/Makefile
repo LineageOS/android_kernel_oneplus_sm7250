@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
+ifeq ($(OPLUS_FEATURE_CAMERA_COMMON), yes)
+
 # auto-detect subdirs
 ifeq ($(CONFIG_ARCH_KONA), y)
 include $(srctree)/techpack/camera-oplus/config/konacamera.conf
@@ -42,4 +44,6 @@ obj-y += drivers/
 obj-y += oplus/
 else
 $(info Target not found)
+endif
+
 endif
