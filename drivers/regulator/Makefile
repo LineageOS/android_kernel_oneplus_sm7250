@@ -82,8 +82,7 @@ obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
 obj-$(CONFIG_REGULATOR_QCOM_RPMH) += qcom-rpmh-regulator.o
 obj-$(CONFIG_REGULATOR_QCOM_SMD_RPM) += qcom_smd-regulator.o
 obj-$(CONFIG_REGULATOR_RPM_SMD) += rpm-smd-regulator.o
-#use variable concatination for logical and BRAND_SHOW_FLAG=oneplus CONFIG_ARCH_LITO=y
-ifeq ($(BRAND_SHOW_FLAG)$(CONFIG_ARCH_LITO), oneplusy)
+ifeq ($(CONFIG_ARCH_LITO), y)
 obj-$(CONFIG_REGULATOR_PM8008) += qcom_pm8008-regulator-nord.o
 else
 obj-$(CONFIG_REGULATOR_PM8008) += qcom_pm8008-regulator.o
@@ -129,8 +128,7 @@ obj-$(CONFIG_REGULATOR_TPS6586X) += tps6586x-regulator.o
 obj-$(CONFIG_REGULATOR_TPS65910) += tps65910-regulator.o
 obj-$(CONFIG_REGULATOR_TPS65912) += tps65912-regulator.o
 obj-$(CONFIG_REGULATOR_TPS80031) += tps80031-regulator.o
-#use variable concatination for logical and BRAND_SHOW_FLAG=oneplus CONFIG_ARCH_LITO=y
-ifeq ($(BRAND_SHOW_FLAG)$(CONFIG_ARCH_LITO), oneplusy)
+ifeq ($(CONFIG_ARCH_LITO), y)
 obj-$(CONFIG_REGULATOR_TPS65132) += tps65132-regulator-nord.o
 else
 obj-$(CONFIG_REGULATOR_TPS65132) += tps65132-regulator.o
