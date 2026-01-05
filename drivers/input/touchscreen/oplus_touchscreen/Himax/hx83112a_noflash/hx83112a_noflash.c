@@ -8264,7 +8264,7 @@ static struct of_device_id tp_match_table[] = {
 };
 
 static const struct dev_pm_ops tp_pm_ops = {
-#if defined(CONFIG_FB) || defined(CONFIG_DRM_MSM)
+#if defined(CONFIG_FB) || defined(CONFIG_DRM_MSM) || defined(CONFIG_DRM_OPLUS_NOTIFY)
     .suspend = hx83112a_nf_i2c_suspend,
     .resume = hx83112a_nf_i2c_resume,
 #endif
