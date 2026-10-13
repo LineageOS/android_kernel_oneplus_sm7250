@@ -368,7 +368,7 @@
 					/* 0xE0 Normal transition */
 					39 01 00 00 00 00 02 53 E0
 					/* HBM Mode ON */
-					39 01 00 00 14 00 03 51 01 D3			/* 800nit */
+					39 01 00 00 00 00 03 51 01 D3			/* 800nit */
 				];
 				qcom,mdss-dsi-aod-hbm-off-command = [
 					/* HBM Mode OFF */
@@ -387,7 +387,7 @@
 					39 01 00 00 00 00 03 F0 A5 A5
 					/* HBM Mode ON */
 					39 01 00 00 00 00 02 53 E0				/* 0xE0 Normal transition */
-					39 01 00 00 14 00 03 51 01 D3			/* 800nit */
+					39 01 00 00 00 00 03 51 01 D3			/* 800nit */
 				];
 				qcom,mdss-dsi-hbm-off-command = [
 					39 01 00 00 00 00 03 F0 5A 5A
@@ -978,7 +978,7 @@
 					/* 0xE0 Normal transition */
 					39 01 00 00 00 00 02 53 E0
 					/* HBM Mode ON */
-					39 01 00 00 14 00 03 51 01 D3			/* 800nit */
+					39 01 00 00 00 00 03 51 01 D3			/* 800nit */
 				];
 				qcom,mdss-dsi-aod-hbm-off-command = [
 					/* HBM Mode OFF */
@@ -997,7 +997,7 @@
 					39 01 00 00 00 00 03 F0 A5 A5
 					/* HBM Mode ON */
 					39 01 00 00 00 00 02 53 E0				/* 0xE0 Normal transition */
-					39 01 00 00 14 00 03 51 01 D3			/* 800nit */
+					39 01 00 00 00 00 03 51 01 D3			/* 800nit */
 				];
 				qcom,mdss-dsi-hbm-off-command = [
 					39 01 00 00 00 00 03 F0 5A 5A
