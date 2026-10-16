@@ -223,52 +223,45 @@ endif
 ifeq ($(CONFIG_OPLUS_CHARGER_MTK6765S),y)
 subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/include
 endif
+
 ifneq ($(CONFIG_OPLUS_CHARGER_MTK),y)
-ifeq ($(BRAND_SHOW_FLAG),oneplus)
 obj-y      += op_wlchg/
-else
-obj-y      += wireless_ic/
-endif
 endif
 
 obj-y      += charger_ic/
 obj-y      += gauge_ic/
 obj-y      += vooc_ic/
 obj-y      += adapter_ic/
-obj-y	   += chargepump_ic/
-obj-y	   += oplus_pps_ops_manager.o
+obj-y      += chargepump_ic/
+obj-y      += oplus_pps_ops_manager.o
 
 obj-y      += voocphy/
 
 #obj-y   += oplus_voocphy.o
 
-obj-y	+= oplus_charger.o
-obj-y	+= oplus_gauge.o
-obj-y	+= oplus_vooc.o
-obj-y	+= oplus_adapter.o
-obj-y 	+= oplus_chg_track.o
-obj-y 	+= oplus_quirks.o
+obj-y   += oplus_charger.o
+obj-y   += oplus_gauge.o
+obj-y   += oplus_vooc.o
+obj-y   += oplus_adapter.o
+obj-y   += oplus_chg_track.o
+obj-y   += oplus_quirks.o
 
 ifneq ($(CONFIG_OPLUS_CHARGER_MTK),y)
-ifeq ($(BRAND_SHOW_FLAG),oneplus)
-obj-y	+= oplus_wlchg_policy.o
+obj-y   += oplus_wlchg_policy.o
 else
-obj-y	+= oplus_wireless.o
-endif # BRAND_SHOW_FLAG
-else
-obj-y	+= oplus_wireless.o
+obj-y   += oplus_wireless.o
 endif # CONFIG_OPLUS_CHARGER_MTK
 
-obj-y	+= oplus_short.o
+obj-y   += oplus_short.o
 obj-y   += oplus_debug_info.o
 obj-y   += oplus_chg_ops_manager.o
-obj-y	+= oplus_pps.o
+obj-y   += oplus_pps.o
 obj-y   += oplus_configfs.o
 obj-y   += charger_ic/s2asl01_switching.o
 obj-y   += charger_ic/oplus_switching.o
 obj-y   += chargepump_ic/
-obj-y	+= oplus_pps_ops_manager.o
-obj-y 	+= oplus_quirks.o
+obj-y   += oplus_pps_ops_manager.o
+obj-y   += oplus_quirks.o
 
 obj-y += oplus_chg_voter.o
 obj-y += oplus_chg_core.o
