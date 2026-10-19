@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include "ebba/lagoon-mtp.dtsi"
+#include "ebba/lagoon-mtp-common-overlay.dtsi"
+#include "ebba/lagoon-mtp-ebba-overlay.dtsi"
+#include "ebba/charge/oplus_charge_ebba.dtsi"
+#include "ebba/sensor/ebba-sensor-20813.dtsi"
+#include "ebba/nord_ce_nfc/nord-ce-nfc-pn557.dtsi"
+#include "ebba/fingerprint/ebba-fingerprint-20813.dtsi"
+#include "ebba/storage/ebba-stg.dtsi"
+/* #ifdef OPLUS_ARCH_EXTENDS */
+#include "ebba/lagoon-audio-ebba-overlay.dtsi"
+/* #endif OPLUS_ARCH_EXTENDS */
+
+/ {
+	model = "Qualcomm Technologies, Inc. Lagoon MTP Ebba";
+	compatible = "qcom,lagoon-mtp", "qcom,lagoon", "qcom,mtp";
+	qcom,msm-id = <434 0x10000>, <459 0x10000>;
+	qcom,board-id = <8 0>;
+	oplus,dtsi_no = <20813>;
+};

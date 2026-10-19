@@ -1,0 +1,30 @@
+/dts-v1/;
+
+#include "../qcom/lagoon.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Lagoon SoC";
+	compatible = "qcom,lagoon";
+	qcom,board-id = <0 0>;
+	oplus,dtsi_no = <20813>;
+
+	aliases {
+		i2c2 = &qupv3_se10_i2c;
+	};
+};
+
+reserved_memory: &{/reserved-memory} {
+	disp_rdump_memory: disp_rdump_region@0xa0000000 {
+		reg = <0x0 0xA0000000 0x0 0x02300000>;
+		label = "disp_rdump_region";
+	};
+};
+
+&pm8008_regulators {
+	/delete-property/ vdd_l6-supply;
+};
+
+#include "ebba/ebba-pinctrl.dtsi"
+
+#include "ebba/lagoon-oem-common.dtsi"
+#include "ebba/ebba-base.dtsi"
