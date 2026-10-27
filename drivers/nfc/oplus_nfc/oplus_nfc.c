@@ -3,6 +3,7 @@
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/kernel.h>
+#include <linux/string.h>
 #include <linux/proc_fs.h>
 #include <linux/fs.h>
 #include <linux/soc/qcom/smem.h>
@@ -19,9 +20,40 @@
 static char current_chipset[32];
 static bool support_nfc = false;
 
-bool is_nfc_support()
+/* Chipsets handled by the nq-nci driver. Add new variants here. */
+static const char * const nq_nci_chips[] = {
+	"PN557",
+	"NQ330",
+	"SN100T",
+	"SN100F",
+};
+
+bool is_nfc_support(void)
 {
 	return support_nfc;
+}
+
+bool is_nq_nci_chip(void)
+{
+	int i;
+
+	if (!support_nfc)
+	{
+		pr_err("%s, nfc not supported, or oplus_nfc has not started", __func__);
+		return false;
+	}
+
+	for (i = 0; i < ARRAY_SIZE(nq_nci_chips); i++)
+	{
+		if (!strcmp(current_chipset, nq_nci_chips[i]))
+		{
+			pr_err("oplus_nfc current_chipset = %s is handled by nq-nci\n", current_chipset);
+			return true;
+		}
+	}
+
+	pr_err("%s, chipset %s is not handled by nq-nci\n", __func__, current_chipset);
+	return false;
 }
 
 bool is_support_chip(chip_type chip)
