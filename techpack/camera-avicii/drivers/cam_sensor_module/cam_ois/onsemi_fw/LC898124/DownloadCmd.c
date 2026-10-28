@@ -371,8 +371,8 @@ unsigned char SelectDownload(UINT8 GyroSelect, UINT8 ActSelect, UINT8 MasterSlav
 	if( (ActSelect != Dspcode.ActType) || ((GyroSelect&0x7f) != Dspcode.GyroType) ) return(0xF2);
 
 	// 高速化対応Download
-TRACE("DataPM( %08x ), LengthPM( %08x ) , Parity( %08x ), DataDM( %08x ) , LengthDMA( %08x ) , LengthDMB( %08x ) \n"
-	, (int)ptr->DataPM , (int)ptr->LengthPM , (int)ptr->Parity , (int)ptr->DataDM , (int)ptr->LengthDMA , (int)ptr->LengthDMB );
+TRACE("DataPM( %p ), LengthPM( %08x ) , Parity( %08x ), DataDM( %p ) , LengthDMA( %08x ) , LengthDMB( %08x ) \n"
+	, ptr->DataPM , (int)ptr->LengthPM , (int)ptr->Parity , ptr->DataDM , (int)ptr->LengthDMA , (int)ptr->LengthDMB );
 	return( DownloadToEP3( ptr->DataPM, ptr->LengthPM, ptr->Parity, ptr->DataDM, ptr->LengthDMA , ptr->LengthDMB ) ); 
 }
 

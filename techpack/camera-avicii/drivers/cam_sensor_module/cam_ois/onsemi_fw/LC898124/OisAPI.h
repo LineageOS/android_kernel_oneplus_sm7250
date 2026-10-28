@@ -37,7 +37,6 @@ extern UINT8 GetGyroOffset124( UINT16* GyroOffsetX, UINT16* GyroOffsetY, INT16 G
 extern void	SetGyroOffset124( UINT16 GyroOffsetX, UINT16 GyroOffsetY, UINT16 GyroOffsetZ );	// set the gyro offset data. before do this before Remapmain.
 
 /* Angle correction for 45deg*/
-extern UINT8 SetAngleCorrection124( float DegreeGap, UINT8 SelectAct, unsigned char Arrangement );
 
 extern void	SetGyroAccelCoef( UINT8 );
 
@@ -55,7 +54,6 @@ extern	UINT8	AfStbyRls( void );						// Af Standby release Command Function
 extern	void	SetPanTiltMode124( UINT8 UcPnTmod );		// default ON.
 extern  void	SetSinWavePara( UINT8 , UINT8 ) ;		// Circle movement 
 
-extern	UINT8	RunHea124( void ) ;						// Hall Examination of Acceptance
 #if ((SELECT_VENDOR & 0x80 ) != 0x80)
 extern	UINT8	RunGea124( void ) ;						// Gyro Examination of Acceptance
 #endif //((SELECT_VENDOR & 0x80 ) != 0x80)
@@ -69,7 +67,6 @@ extern UINT32	TneAvc( UINT8 ucposture );				// Accel offset adjustment
 extern void	SetAcclOffset124( UINT16  AcclOffsetX, UINT16  AcclOffsetY, UINT16  AcclOffsetZ );	// set the accl offset data. before do this before Remapmain.
 extern void	GetAcclOffset124( UINT16* AcclOffsetX, UINT16* AcclOffsetY, UINT16* AcclOffsetZ );	// get the accl offset values.
 
-extern void	LinearityCalculation( void );				// Linearity correction
 extern void	CrosstalkCalculation( void );				// Crosstalk correction
 extern void	SetOpticalOffset( void );					// optical offset
 
@@ -89,7 +86,6 @@ extern UINT8	WrZeroServoData( void );				// upload the servo servo parameter to 
 
 //extern UINT8	WrLinCrsData( UINT8 writemode );		// upload linearity & cross talk parameter to eeprom
 #if ((SELECT_VENDOR & 0x80 ) != 0x80)
-extern UINT8	WrHallLnData(  UINT8 UcMode, mlLinearityValue *linval );	// upload linearity position to eeprom
 extern UINT8	WrMixCalData124(  UINT8 UcMode, mlMixingValue *mixval );		// upload cross talk to eeprom
 extern UINT8	CalcSetMizxAndLinearityData( mlLinearityValue *,  mlMixingValue * ) ;
 #endif //((SELECT_VENDOR & 0x80 ) != 0x80)

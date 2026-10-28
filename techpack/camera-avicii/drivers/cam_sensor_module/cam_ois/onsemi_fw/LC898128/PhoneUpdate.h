@@ -313,7 +313,6 @@ typedef union ULLNVAL	UnllnVal;
 //==============================================================================
 //extern UINT_8	FlashDownload128( UINT_8 , UINT_8, UINT_8  );
 
-extern UINT_8	SetAngleCorrection( float , UINT_8 , UINT_8  );
 extern UINT_8	UnlockCodeSet( void );
 extern UINT_8	UnlockCodeClear(void);
 extern UINT_32	MeasGyAcOffset(  void  );
@@ -332,7 +331,6 @@ extern void		SetPanTiltMode( UINT_8 UcPnTmod );
 extern void		SscEna( void );
 extern void		SscDis( void );
 
-extern UINT_8	RunHea( void );
 extern UINT_8	RunGea( void );
 
 extern UINT_32	FW_info[][3];
