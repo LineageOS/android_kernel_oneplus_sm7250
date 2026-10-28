@@ -12597,6 +12597,8 @@ static int smb5_init_dc_psy(struct smb5 *chip)
  static enum power_supply_property ac_props[] = {
 /*oplus own ac props*/
         POWER_SUPPLY_PROP_ONLINE,
+	POWER_SUPPLY_PROP_CURRENT_MAX,
+	POWER_SUPPLY_PROP_VOLTAGE_MAX,
 };
 
 static int smb5_ac_get_property(struct power_supply *psy,
@@ -12604,6 +12606,9 @@ static int smb5_ac_get_property(struct power_supply *psy,
 	union power_supply_propval *val)
 {
 	int rc = 0;
+
+	if (psp == POWER_SUPPLY_PROP_CURRENT_MAX || psp == POWER_SUPPLY_PROP_VOLTAGE_MAX)
+		return smb5_usb_get_prop(psy, psp, val);
 
     rc = oplus_ac_get_property(psy, psp, val);
 
