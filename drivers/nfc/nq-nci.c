@@ -1183,7 +1183,6 @@ static const struct file_operations nfc_dev_fops = {
 #endif
 };
 
-#if 0
 /*
  * function: get_nfcc_hw_info()
  *
@@ -1312,15 +1311,12 @@ err_nfcc_hw_info:
 
 	return ret;
 }
-#endif
 
 /* Check for availability of NQ_ NFC controller hardware */
-static int nfcc_hw_check(struct i2c_client *client, struct nqx_dev *nqx_dev)
+static int nfcc_hw_check_nci(struct i2c_client *client, struct nqx_dev *nqx_dev)
 {
 	int ret = 0;
 
-#ifndef OPLUS_BUG_STABILITY
-	unsigned char reset_ntf_len = 0;
 	unsigned int enable_gpio = nqx_dev->en_gpio;
 	char *nci_reset_cmd = NULL;
 	char *nci_reset_rsp = NULL;
@@ -1506,12 +1502,22 @@ done:
 	kfree(nci_reset_cmd);
 	kfree(nci_get_version_cmd);
 	kfree(nci_get_version_rsp);
-#else /* OPLUS_BUG_STABILITY */
+
+	return ret;
+}
+
+static int nfcc_hw_check(struct i2c_client *client, struct nqx_dev *nqx_dev)
+{
+#ifdef OPLUS_BUG_STABILITY
+    int ret = 0;
     unsigned int enable_gpio = nqx_dev->en_gpio;
     unsigned int firm_gpio = nqx_dev->firm_gpio;
     char *nci_get_fw_cmd = NULL;
     char *nci_get_fw_rsp = NULL;
     int gpio_retry_count = 0;
+
+	if (IS_ENABLED(CONFIG_ARCH_LITO) && is_support_chip(NQ330))
+		return nfcc_hw_check_nci(client, nqx_dev);
 
     nci_get_fw_cmd = kzalloc(NCI_GET_FW_CMD_LEN + 1, GFP_DMA | GFP_KERNEL);
     if (!nci_get_fw_cmd) {
@@ -1583,9 +1589,11 @@ done:
     gpio_set_value(enable_gpio, 0);
     kfree(nci_get_fw_rsp);
     kfree(nci_get_fw_cmd);
-#endif /* OPLUS_BUG_STABILITY */
 
-	return ret;
+    return ret;
+#else
+    return nfcc_hw_check_nci(client, nqx_dev);
+#endif
 }
 
 /*
