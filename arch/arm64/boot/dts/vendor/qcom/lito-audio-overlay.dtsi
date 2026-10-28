@@ -325,8 +325,10 @@
 	asoc-codec-names = "msm-stub-codec.1", "bolero_codec",
 			   "msm-ext-disp-audio-codec-rx";
 	qcom,wsa-max-devs = <2>;
+#ifndef OPLUS_EXTERNAL_SPEAKER
 	qcom,wsa-devs = <&wsa881x_0211>, <&wsa881x_0212>,
 			<&wsa881x_0213>, <&wsa881x_0214>;
+#endif
 	qcom,wsa-aux-dev-prefix = "SpkrLeft", "SpkrRight",
 				  "SpkrLeft", "SpkrRight";
 	qcom,codec-max-aux-devs = <1>;
