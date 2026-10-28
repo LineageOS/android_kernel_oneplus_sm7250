@@ -1085,6 +1085,9 @@ int cam_ois_driver_cmd(struct cam_ois_ctrl_t *o_ctrl, void *arg)
 		}
 		o_ctrl->cam_ois_state = CAM_OIS_CONFIG;
 		break;
+	case CAM_FLUSH_REQ:
+		/* OIS settings are applied synchronously, with no queued requests. */
+		break;
 	case CAM_GET_OIS_EIS_HALL: {
                 int get_hall_version;
                 get_hall_version = cmd->reserved;
