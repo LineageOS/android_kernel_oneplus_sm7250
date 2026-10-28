@@ -344,8 +344,8 @@
                            "conn_temp",
                            "usb_in_voltage",
 			   "skin_therm",
-                           "usb_temp_adc",
-                           "usb_supplementary_temp_adc";
+                           "usb_temp_l",
+                           "usb_temp_r";
 
         qcom,battery-data = <&mtp_batterydata>;
         //qcom,step-charging-enable;
