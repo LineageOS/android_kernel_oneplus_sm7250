@@ -3442,6 +3442,8 @@ int oplus_chg_init(struct oplus_chg_chip *chip)
 		return -1;
 	}
 	oplus_chg_track_init(chip);
+	if (IS_ENABLED(CONFIG_ARCH_LITO))
+		INIT_DELAYED_WORK(&chip->fg_soft_reset_work, oplus_fg_soft_reset_work);
 	oplus_chg_variables_init(chip);
 	oplus_get_smooth_soc_switch(chip);
 	oplus_chg_get_battery_data(chip);
@@ -3484,7 +3486,8 @@ int oplus_chg_init(struct oplus_chg_chip *chip)
 	INIT_DELAYED_WORK(&chip->reset_adapter_work, oplus_chg_reset_adapter_work);
 	INIT_DELAYED_WORK(&chip->turn_on_charging_work, oplus_chg_turn_on_charging_work);
 	INIT_DELAYED_WORK(&chip->parallel_chg_mos_test_work, oplus_parallel_chg_mos_test_work);
-	INIT_DELAYED_WORK(&chip->fg_soft_reset_work, oplus_fg_soft_reset_work);
+	if (!IS_ENABLED(CONFIG_ARCH_LITO))
+		INIT_DELAYED_WORK(&chip->fg_soft_reset_work, oplus_fg_soft_reset_work);
 	INIT_DELAYED_WORK(&chip->parallel_batt_chg_check_work, oplus_parallel_batt_chg_check_work);
 	chip->shortc_thread = kthread_create(shortc_thread_main, (void *)chip, thread_name);
 	if (!chip->shortc_thread) {
