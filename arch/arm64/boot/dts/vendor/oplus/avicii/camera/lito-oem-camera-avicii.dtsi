@@ -905,9 +905,9 @@
 
  	cam_sensor_rear_vdig: cam_sensor_rear_vdig {
 		pins = "gpio72";
-		function = "normal";
-		power-source = <0>;
-		drive-push-pull;
+		function = "gpio";
+		bias-disable;
+		drive-strength = <2>;
 		output-low;
 	};
     cam_sensor_rear_1_avdd_active: cam_sensor_rear_1_avdd_active {
